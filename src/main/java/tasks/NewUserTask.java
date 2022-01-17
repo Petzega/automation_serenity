@@ -5,10 +5,12 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import net.serenitybdd.screenplay.questions.Visibility;
 
 import java.util.List;
 
 import static net.serenitybdd.screenplay.Tasks.instrumented;
+import static userInterfaces.HomePageUI.*;
 
 public class NewUserTask implements Task {
 
@@ -19,12 +21,16 @@ public class NewUserTask implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
-        actor.attemptsTo(
-                Click.on("//a[@id='signin2']"),
-                Enter.theValue(data.get(0)).into("//input[@id='sign-username']"),
-                Enter.theValue(data.get(1)).into("//input[@id='sign-password']"),
-                Click.on("//button[contains(text(), 'Sign up')]/following-sibling::button[contains(text(), 'Close')]")
-        );
+        if (Visibility.of(BUTTON_SIGN_IN).viewedBy(actor).asBoolean()) {
+            actor.attemptsTo(
+                    Click.on(BUTTON_SIGN_IN),
+                    Enter.theValue(data.get(0)).into(INPUT_SIGN_USERNAME),
+                    Enter.theValue(data.get(1)).into(INPUT_SIGN_PASSWORD),
+                    Click.on(BUTTON_CLOSE)
+            );
+        } else {
+            System.out.println("No se encuentra el boton");
+        }
     }
 
     public static NewUserTask createNewUser(List<String> data) {
