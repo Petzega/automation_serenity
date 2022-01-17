@@ -26,15 +26,12 @@ public class NewUserTask implements Task {
                     Click.on(BUTTON_SIGN_IN),
                     Enter.theValue(data.get(0)).into(INPUT_SIGN_USERNAME),
                     Enter.theValue(data.get(1)).into(INPUT_SIGN_PASSWORD),
-                    Click.on(BUTTON_CLOSE)
+                    Click.on(BUTTON_ACCEPT_FORM)
             );
-        } else {
-            System.out.println("No se encuentra el boton");
         }
     }
 
     public static NewUserTask createNewUser(List<String> data) {
-
         return instrumented(NewUserTask.class, data);
     }
 }

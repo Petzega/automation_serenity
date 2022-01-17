@@ -11,6 +11,10 @@ import userInterfaces.HomePageUI;
 
 import java.util.List;
 
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.actions.Hit.the;
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isPresent;
+
 public class DemoblazeStepDefinition {
 
     @Managed(driver = "chrome")
@@ -29,14 +33,10 @@ public class DemoblazeStepDefinition {
         actor.wasAbleTo(
                 NewUserTask.createNewUser(data)
         );
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     @Entonces("^Se crea la cuenta correctamente$")
     public void seCreaLaCuentaCorrectamente() {
+//        actor.should(seeThat(the(), isPresent()));
     }
 }

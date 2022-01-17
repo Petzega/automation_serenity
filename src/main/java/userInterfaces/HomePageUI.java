@@ -13,6 +13,8 @@ public class HomePageUI extends PageObject {
             .located(By.xpath("//input[@id='sign-username']"));
     public static final Target INPUT_SIGN_PASSWORD = Target.the("Input para ingresar nueva contraseña")
             .located(By.xpath("//input[@id='sign-password']"));
-    public static final Target BUTTON_CLOSE = Target.the("Boton para cerar el formulario")
+    public static final Target BUTTON_CLOSE_FORM = Target.the("Boton para cerar el formulario")
             .located(By.xpath("//div[@id='signInModal']/descendant::button[@class='btn btn-secondary']"));
+    public static final Target BUTTON_ACCEPT_FORM = Target.the("Boton para acpetar el formulario")
+            .located(By.xpath("//div[@id='signInModal']/descendant::button[@class='btn btn-primary']"));
 }
